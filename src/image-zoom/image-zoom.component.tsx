@@ -385,11 +385,11 @@ export default class ImageViewer extends React.Component<Props, State> {
                 (this.zoomCurrentDistance - this.zoomLastDistance) / 200
               let zoom = this.scale + distanceDiff
 
-              if (zoom < 0.6) {
-                zoom = 0.6
+              if (zoom < this.props.minScale) {
+                zoom = this.props.minScale
               }
-              if (zoom > 10) {
-                zoom = 10
+              if (zoom > this.props.maxScale) {
+                zoom = this.props.maxScale
               }
 
               // 记录之前缩放比例
@@ -461,14 +461,14 @@ export default class ImageViewer extends React.Component<Props, State> {
   }
 
   public panResponderReleaseResolve = () => {
-    if (this.scale < 1) {
+    /*if (this.scale < 1) {
       // 如果缩放小于1，强制重置为 1
       this.scale = 1
       Animated.timing(this.animatedScale, {
         toValue: this.scale,
         duration: 100
       }).start()
-    }
+    }*/
 
     if (this.props.imageWidth * this.scale <= this.props.cropWidth) {
       // 如果图片宽度小于盒子宽度，横向位置重置
@@ -508,7 +508,7 @@ export default class ImageViewer extends React.Component<Props, State> {
     }
 
     // 拖拽正常结束后,如果没有缩放,直接回到0,0点
-    if (this.scale === 1) {
+    /*if (this.scale === 1) {
       this.positionX = 0
       this.positionY = 0
       Animated.timing(this.animatedPositionX, {
@@ -520,6 +520,7 @@ export default class ImageViewer extends React.Component<Props, State> {
         duration: 100
       }).start()
     }
+	*/
 
     // 水平溢出量置空
     this.horizontalWholeOuterCounter = 0

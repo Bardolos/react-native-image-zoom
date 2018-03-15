@@ -66,6 +66,9 @@ export class Props {
 
   public style?: ViewStyle = {}
 
+  public minScale: number = 0.1;
+  public maxScale: number = 10;
+
   /**
    * 单击的回调
    */

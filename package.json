@@ -24,8 +24,8 @@
   "devDependencies": {
     "@types/react": "*",
     "ascoders-tslint-config": "^1.0.2",
-    "react": "*",
-    "react-native": "*",
+    "react": "16.0.0-alpha.12",
+    "react-native": "^0.48.3",
     "tslint": "^5.8.0",
     "typescript": "^2.4.2"
   }
